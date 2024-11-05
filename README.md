@@ -7,7 +7,7 @@ Home: https://github.com/DudeNr33/pyinstaller-versionfile
 
 Package license: MIT
 
-Summary: Create a version file from a simple YAML config file
+Summary: Create a windows version-file from metadata stored in a simple self-written YAML file or obtained from an installed distribution.
 
 Current build status
 ====================
