@@ -10,19 +10,20 @@ source:
   sha256: e777ac27a0aacd1ced04086e7f09370434704591a5c3c3278f65e5ce5a148630
 
 build:
-  noarch: python
   entry_points:
-    - create-version-file = pyinstaller_versionfile.__main__:main
+    - create-version-file = pyinstaller_versionfile.__main__:create_version_file
+    - pyivf-make_version = pyinstaller_versionfile.__main__:make_version
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
-    - python >=3.8
-    - pip
+    - python >=3.9,<4.0
     - poetry-core >=1.0.0
+    - pip
   run:
-    - python >=3.8
+    - python >=3.9.0,<4.0.0
     - jinja2
     - pyyaml
     - packaging
@@ -33,12 +34,13 @@ test:
   commands:
     - pip check
     - create-version-file --help
+    - pyivf-make_version --help
   requires:
     - pip
 
 about:
   home: https://github.com/DudeNr33/pyinstaller-versionfile
-  summary: Create a version file from a simple YAML config file
+  summary: Create a windows version-file from metadata stored in a simple self-written YAML file or obtained from an installed distribution.
   license: MIT
   license_file: LICENSE
 
